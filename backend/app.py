@@ -42,7 +42,12 @@ def delete_habit(habit_id):
     conn.close()
     return jsonify({'message': 'Habit deleted'})
 
-
+@app.route('/api/completions', methods=['GET'])
+def get_completions():
+    conn = get_connection()
+    completions = conn.execute('SELECT * FROM completions').fetchall()
+    conn.close()
+    return jsonify([dict(c) for c in completions])
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
