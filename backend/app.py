@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from database import init_db, get_connection
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 CORS(app)
@@ -78,8 +79,54 @@ def toggle_completion():
         conn.commit()
         conn.close()
         return jsonify({'status': 'added'})
+    
+    
 
+@app.route('/api/stats', methods=['GET'])
+def get_stats():
+    conn = get_connection()
+    habits = conn.execute('SELECT * FROM habits').fetchall()
+    stats = []
 
+    for habit in habits:
+        total = conn.execute(
+            'SELECT COUNT(*) as count FROM completions WHERE habit_id = ?',
+            (habit['id'],)
+        ).fetchone()['count']
+
+        streak = 0
+        check_date = datetime.today().date()
+        while True:
+            exists = conn.execute(
+                'SELECT id FROM completions WHERE habit_id = ? AND completed_date = ?',
+                (habit['id'], str(check_date))
+            ).fetchone()
+            if exists:
+                streak += 1
+                check_date -= timedelta(days=1)
+            else:
+                break
+
+        last7 = []
+        for i in range(6, -1, -1):
+            d = datetime.today().date() - timedelta(days=i)
+            done = conn.execute(
+                'SELECT id FROM completions WHERE habit_id = ? AND completed_date = ?',
+                (habit['id'], str(d))
+            ).fetchone()
+            last7.append({'date': str(d), 'completed': done is not None})
+
+        stats.append({
+            'habit_id': habit['id'],
+            'name': habit['name'],
+            'color': habit['color'],
+            'total_completions': total,
+            'current_streak': streak,
+            'last_7_days': last7
+        })
+
+    conn.close()
+    return jsonify(stats)
 
 
 
