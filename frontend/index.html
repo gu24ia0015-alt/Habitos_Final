@@ -92,5 +92,36 @@
 
   </main>
 
+  <!-- MODAL: Crear Hábito -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Nuevo Hábito</h3>
+        <button id="close-modal-btn" class="btn-icon">✕</button>
+      </div>
+      <div class="modal-body">
+        <label>Nombre *</label>
+        <input type="text" id="habit-name" placeholder="Ej: Meditar 10 minutos" />
+
+        <label>Descripción</label>
+        <input type="text" id="habit-desc" placeholder="Opcional..." />
+
+        <label>Color</label>
+        <div class="color-picker">
+          <span class="color-opt selected" data-color="#6366f1" style="background:#6366f1"></span>
+          <span class="color-opt" data-color="#ec4899" style="background:#ec4899"></span>
+          <span class="color-opt" data-color="#10b981" style="background:#10b981"></span>
+          <span class="color-opt" data-color="#f59e0b" style="background:#f59e0b"></span>
+          <span class="color-opt" data-color="#ef4444" style="background:#ef4444"></span>
+          <span class="color-opt" data-color="#3b82f6" style="background:#3b82f6"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-btn" class="btn btn-secondary">Cancelar</button>
+        <button id="save-habit-btn" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
