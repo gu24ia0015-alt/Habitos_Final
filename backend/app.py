@@ -32,5 +32,17 @@ def create_habit():
     conn.close()
     return jsonify(dict(habit)), 201
 
+
+
+@app.route('/api/habits/<int:habit_id>', methods=['DELETE'])
+def delete_habit(habit_id):
+    conn = get_connection()
+    conn.execute('DELETE FROM habits WHERE id = ?', (habit_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({'message': 'Habit deleted'})
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
