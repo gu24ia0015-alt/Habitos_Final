@@ -49,5 +49,41 @@ def get_completions():
     conn.close()
     return jsonify([dict(c) for c in completions])
 
+
+@app.route('/api/completions/toggle', methods=['POST'])
+def toggle_completion():
+    data = request.get_json()
+    habit_id = data.get('habit_id')
+    date = data.get('date')
+
+    if not habit_id or not date:
+        return jsonify({'error': 'habit_id and date are required'}), 400
+
+    conn = get_connection()
+    existing = conn.execute(
+        'SELECT id FROM completions WHERE habit_id = ? AND completed_date = ?',
+        (habit_id, date)
+    ).fetchone()
+
+    if existing:
+        conn.execute('DELETE FROM completions WHERE id = ?', (existing['id'],))
+        conn.commit()
+        conn.close()
+        return jsonify({'status': 'removed'})
+    else:
+        conn.execute(
+            'INSERT INTO completions (habit_id, completed_date) VALUES (?, ?)',
+            (habit_id, date)
+        )
+        conn.commit()
+        conn.close()
+        return jsonify({'status': 'added'})
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
