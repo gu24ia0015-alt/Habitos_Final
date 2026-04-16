@@ -55,5 +55,33 @@
       </div>
     </section>
 
+    <!-- HABITS LIST + CALENDAR -->
+    <div class="grid-2col">
+
+      <!-- HABITS LIST -->
+      <section class="card">
+        <h2 class="section-title">Mis Hábitos</h2>
+        <div id="habits-list" class="habits-list">
+          <p class="empty-msg">No tienes hábitos aún. ¡Crea uno! 🚀</p>
+        </div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="card">
+        <h2 class="section-title">Calendario</h2>
+        <div class="calendar-controls">
+          <button id="prev-month" class="btn-icon">‹</button>
+          <span id="calendar-title" class="calendar-month"></span>
+          <button id="next-month" class="btn-icon">›</button>
+        </div>
+        <div id="calendar" class="calendar"></div>
+        <div class="calendar-legend">
+          <span class="legend-dot completed-dot"></span> Completado
+          <span class="legend-dot"></span> Pendiente
+        </div>
+      </section>
+
+    </div>
+
 </body>
 </html>
