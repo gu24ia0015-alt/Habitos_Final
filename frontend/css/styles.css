@@ -69,3 +69,13 @@ input, button { font-family: inherit; }
 .stat-icon { font-size: 2rem; }
 .stat-label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
 .stat-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn { padding: .6rem 1.4rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: .9rem; transition: all var(--transition); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+.btn-secondary { background: var(--border); color: var(--text); }
+.btn-secondary:hover { background: var(--bg-hover); }
+.btn-icon { background: transparent; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-muted); padding: .35rem .5rem; border-radius: 6px; transition: all var(--transition); }
+.btn-icon:hover { background: var(--bg-hover); color: var(--text); }
