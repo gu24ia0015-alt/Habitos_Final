@@ -55,3 +55,17 @@ input, button { font-family: inherit; }
 /* ── CARDS ──────────────────────────────────────────────── */
 .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
 .section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+
+
+/* ── DASHBOARD HEADER ───────────────────────────────────── */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.dashboard-header h1 { font-size: 1.8rem; font-weight: 700; }
+.subtitle { color: var(--text-muted); margin-top: .25rem; }
+
+/* ── STATS ──────────────────────────────────────────────── */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; box-shadow: var(--shadow); }
+.stat-icon { font-size: 2rem; }
+.stat-label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+.stat-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
