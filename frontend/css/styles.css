@@ -111,3 +111,10 @@ input, button { font-family: inherit; }
 .calendar-legend { display: flex; align-items: center; gap: .5rem; margin-top: .75rem; font-size: .8rem; color: var(--text-muted); }
 .legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); display: inline-block; }
 .completed-dot { background: var(--primary); }
+
+
+
+/* ── CHARTS ──────────────────────────────────────────────── */
+.charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.chart-wrapper { background: var(--bg-hover); border-radius: 10px; padding: 1rem; }
+.chart-wrapper h4 { margin-bottom: .75rem; font-size: .9rem; color: var(--text-muted); }
