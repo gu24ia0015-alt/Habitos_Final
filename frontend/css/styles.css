@@ -94,3 +94,20 @@ input, button { font-family: inherit; }
 .habit-delete { background: transparent; border: none; cursor: pointer; color: var(--text-muted); font-size: 1rem; padding: .25rem; border-radius: 4px; transition: all var(--transition); }
 .habit-delete:hover { color: var(--danger); background: rgba(239,68,68,.1); }
 .empty-msg { color: var(--text-muted); text-align: center; padding: 2rem 0; }
+
+
+
+
+/* ── CALENDAR ─────────────────────────────────────────────── */
+.calendar-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
+.calendar-month { font-weight: 600; }
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+.cal-header { font-size: .7rem; color: var(--text-muted); font-weight: 600; padding: .3rem 0; text-transform: uppercase; }
+.cal-day { padding: .4rem .2rem; border-radius: 6px; font-size: .8rem; cursor: pointer; border: 1px solid transparent; transition: all var(--transition); }
+.cal-day:hover { background: var(--bg-hover); }
+.cal-day.today { border-color: var(--primary); color: var(--primary); font-weight: 700; }
+.cal-day.has-completions { background: rgba(99,102,241,.25); color: var(--primary); }
+.cal-day.empty { cursor: default; }
+.calendar-legend { display: flex; align-items: center; gap: .5rem; margin-top: .75rem; font-size: .8rem; color: var(--text-muted); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); display: inline-block; }
+.completed-dot { background: var(--primary); }
