@@ -1,0 +1,26 @@
+/* ── CSS VARIABLES & THEMES ─────────────────────────────── */
+:root {
+  --bg: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --bg-hover: #16213e;
+  --border: #2a2a4a;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --transition: 0.2s ease;
+}
+
+[data-theme="light"] {
+  --bg: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hover: #f8fafc;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
