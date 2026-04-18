@@ -107,3 +107,12 @@ async function toggleHabit(habitId) {
   });
   await loadAll();
 }
+
+
+
+// ── DELETE HABIT ──────────────────────────────────────────────
+async function deleteHabit(habitId) {
+  if (!confirm('¿Eliminar este hábito?')) return;
+  await fetch(`${API}/habits/${habitId}`, { method: 'DELETE' });
+  await loadAll();
+}
