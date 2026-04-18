@@ -27,3 +27,21 @@ async function loadAll() {
   renderCharts();
   if (window.renderCalendar) window.renderCalendar();
 }
+
+
+
+// ── FETCH ─────────────────────────────────────────────────────
+async function fetchHabits() {
+  const res = await fetch(`${API}/habits`);
+  habits = await res.json();
+}
+
+async function fetchCompletions() {
+  const res = await fetch(`${API}/completions`);
+  completions = await res.json();
+}
+
+async function fetchStats() {
+  const res = await fetch(`${API}/stats`);
+  stats = await res.json();
+}
