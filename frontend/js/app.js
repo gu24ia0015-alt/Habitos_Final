@@ -45,3 +45,39 @@ async function fetchStats() {
   const res = await fetch(`${API}/stats`);
   stats = await res.json();
 }
+
+
+
+// ── RENDER HABITS ─────────────────────────────────────────────
+function renderHabits() {
+  const list = document.getElementById('habits-list');
+  const today = new Date().toISOString().split('T')[0];
+
+  if (habits.length === 0) {
+    list.innerHTML = '<p class="empty-msg">No tienes hábitos aún. ¡Crea uno! 🚀</p>';
+    return;
+  }
+
+  list.innerHTML = habits.map(habit => {
+    const isDone = completions.some(c =>
+      c.habit_id === habit.id && c.completed_date === today
+    );
+    const habitStats = stats.find(s => s.habit_id === habit.id);
+    const streak = habitStats ? habitStats.current_streak : 0;
+
+    return `
+      <div class="habit-item" id="habit-${habit.id}">
+        <div class="habit-color" style="background:${habit.color}"></div>
+        <div class="habit-info">
+          <p class="habit-name">${habit.name}</p>
+          <p class="habit-streak">🔥 ${streak} días de racha</p>
+        </div>
+        <button class="habit-check ${isDone ? 'done' : ''}"
+          onclick="toggleHabit(${habit.id})"
+          title="${isDone ? 'Marcar incompleto' : 'Marcar completo'}">
+          ${isDone ? '✓' : ''}
+        </button>
+        <button class="habit-delete" onclick="deleteHabit(${habit.id})" title="Eliminar">🗑</button>
+      </div>`;
+  }).join('');
+}
