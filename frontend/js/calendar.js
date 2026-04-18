@@ -6,17 +6,6 @@ window.renderCalendar = function () {
 
   document.getElementById('calendar-title').textContent =
     new Date(year, month).toLocaleDateString('es-MX', { month: 'long', year: 'numeric' });
-}
-
-
-let currentDate = new Date();
-
-window.renderCalendar = function () {
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-
-  document.getElementById('calendar-title').textContent =
-    new Date(year, month).toLocaleDateString('es-MX', { month: 'long', year: 'numeric' });
 
   const cal = document.getElementById('calendar');
   const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
@@ -39,3 +28,13 @@ window.renderCalendar = function () {
 
   cal.innerHTML = html;
 }
+
+
+document.getElementById('prev-month').onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    window.renderCalendar();
+  };
+  document.getElementById('next-month').onclick = () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    window.renderCalendar();
+  };
