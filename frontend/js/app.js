@@ -116,3 +116,30 @@ async function deleteHabit(habitId) {
   await fetch(`${API}/habits/${habitId}`, { method: 'DELETE' });
   await loadAll();
 }
+
+
+
+
+// ── MODAL ─────────────────────────────────────────────────────
+function setupModal() {
+  const overlay = document.getElementById('modal-overlay');
+  document.getElementById('open-modal-btn').onclick = () => overlay.classList.remove('hidden');
+  document.getElementById('close-modal-btn').onclick = closeModal;
+  document.getElementById('cancel-btn').onclick = closeModal;
+  document.getElementById('save-habit-btn').onclick = saveHabit;
+
+  // Color picker
+  document.querySelectorAll('.color-opt').forEach(opt => {
+    opt.onclick = () => {
+      document.querySelectorAll('.color-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selectedColor = opt.dataset.color;
+    };
+  });
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.add('hidden');
+  document.getElementById('habit-name').value = '';
+  document.getElementById('habit-desc').value = '';
+}
