@@ -81,3 +81,16 @@ function renderHabits() {
       </div>`;
   }).join('');
 }
+
+
+
+// ── RENDER STAT CARDS ─────────────────────────────────────────
+function renderStats() {
+  const today = new Date().toISOString().split('T')[0];
+  const completedToday = completions.filter(c => c.completed_date === today).length;
+  const bestStreak = stats.reduce((max, s) => Math.max(max, s.current_streak), 0);
+
+  document.getElementById('total-habits').textContent = habits.length;
+  document.getElementById('completed-today').textContent = completedToday;
+  document.getElementById('best-streak').textContent = bestStreak;
+}
