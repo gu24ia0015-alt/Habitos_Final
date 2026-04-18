@@ -11,4 +11,11 @@ function renderCharts() {
   // Destruir charts anteriores para evitar duplicados
   Object.values(chartInstances).forEach(c => c.destroy());
   chartInstances = {};
+
+  container.innerHTML = stats.map(s =>
+    `<div class="chart-wrapper">
+       <h4>${s.name} — ${s.total_completions} completaciones</h4>
+       <canvas id="chart-${s.habit_id}"></canvas>
+     </div>`
+  ).join('');
 }
