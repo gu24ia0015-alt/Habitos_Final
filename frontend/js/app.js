@@ -11,3 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModal();
   setupTheme();
 });
+
+
+
+function setTodayDate() {
+  const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById('today-date').textContent =
+    new Date().toLocaleDateString('es-MX', opts);
+}
+
+async function loadAll() {
+  await Promise.all([fetchHabits(), fetchCompletions(), fetchStats()]);
+  renderHabits();
+  renderStats();
+  renderCharts();
+  if (window.renderCalendar) window.renderCalendar();
+}
