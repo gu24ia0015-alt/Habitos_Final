@@ -94,3 +94,16 @@ function renderStats() {
   document.getElementById('completed-today').textContent = completedToday;
   document.getElementById('best-streak').textContent = bestStreak;
 }
+
+
+
+// ── TOGGLE COMPLETION ─────────────────────────────────────────
+async function toggleHabit(habitId) {
+  const today = new Date().toISOString().split('T')[0];
+  await fetch(`${API}/completions/toggle`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ habit_id: habitId, date: today })
+  });
+  await loadAll();
+}
