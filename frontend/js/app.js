@@ -143,3 +143,17 @@ function closeModal() {
   document.getElementById('habit-name').value = '';
   document.getElementById('habit-desc').value = '';
 }
+
+
+async function saveHabit() {
+  const name = document.getElementById('habit-name').value.trim();
+  if (!name) { alert('El nombre es obligatorio'); return; }
+
+  await fetch(`${API}/habits`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, description: document.getElementById('habit-desc').value, color: selectedColor })
+  });
+  closeModal();
+  await loadAll();
+}
